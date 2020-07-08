@@ -23,5 +23,5 @@ mongoose.connect("mongodb://localhost/budget", {
 app.use(require("./routes/api.js"));
 
 app.listen(PORT, () => {
-  console.log(`Application running at http://localhost:${PORT}!`);
+  console.log(`Application running at http://localhost:${PORT}`);
 });

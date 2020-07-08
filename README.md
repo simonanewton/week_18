@@ -18,11 +18,6 @@ To install the required npm packages to run this application, run the following 
 npm install
 ```
 
-To create a local instance of the Mongo database on your machine, run the following command:
-```sh
-npm run seed
-```
-
 ## Usage
 
 To use this application, run the following command:
