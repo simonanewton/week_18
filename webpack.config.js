@@ -3,10 +3,10 @@ const path = require("path");
 
 const config = {
   entry: {
-    app: "./assets/js/index.js"
+    index: "./public/assets/js/index.js"
   },
   output: {
-    path: __dirname + "/dist",
+    path: __dirname + "/public/dist",
     filename: "[name].bundle.js"
   },
   mode: "development",
@@ -26,6 +26,9 @@ const config = {
   },
   plugins: [
     new WebpackPwaManifest({
+      filename: "manifest.json",
+      inject: false,
+      fingerprints: false,
       name: "offline-budget-tracker",
       short_name: "budget",
       description: "The user will be able to add expenses and deposits to their budget with or without a connection. When entering transactions offline, they should populate the total when brought back online.",
@@ -33,9 +36,8 @@ const config = {
       theme_color: "#ffffff",
       start_url: "/",
       icons: [{
-        src: path.resolve("./assets/icons/icon-192x192.png"),
-        sizes: [96, 128, 192, 256, 384, 512],
-        destination: path.join("assets", "icons")
+        src: path.resolve("./public/assets/icons/icon-192x192.png"),
+        sizes: [96, 128, 192, 256, 384, 512]
       }]
     })
   ]
