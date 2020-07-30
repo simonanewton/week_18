@@ -2,7 +2,7 @@
 
 ## Description
 
-???
+This application allows users to keep track of their budget while to connected to the internet and while being offline. When offline, budget entries made by the user are stored, and upon reconnction, the MongoDB database is updated. This application makes use of a webpack.config, a service worker, and a manifest.json file to become a Progressive Web Application. Learn more about PWA's [here](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps).
 
 ## Table of Contents
 
@@ -29,7 +29,6 @@ npm start
 
 * https://www.npmjs.com/package/compression
 * https://www.npmjs.com/package/express
-* https://www.npmjs.com/package/lite-server
 * https://www.npmjs.com/package/mongoose
 * https://www.npmjs.com/package/morgan
 
