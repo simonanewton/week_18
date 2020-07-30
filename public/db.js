@@ -1,27 +1,23 @@
+let db;
+
 const request = indexedDB.open('budget', 1);
 
 request.onupgradeneeded = (event) => {
     const db = event.target.result;
-    db.CreateObjectStore('pending', { autoincrement: true });
+    db.createObjectStore('pending', { autoincrement: true });
 };
 
 request.onsuccess = (event) => {
-    const db = event.target.result;
+    db = event.target.result;
     if (navigator.onLine) checkDB();
 };
 
 request.onerror = (event) => {
     console.log(event.target.errorCode);
-}
-
-function saveRecord(record) {
-    const transaction = db.transaction(['pending'], 'readWrite');
-    const store = transaction.objectStore('pending');
-    store.add(record);
-}
+};
 
 function checkDB() {
-    const transaction = db.transaction(['pending'], 'readWrite');
+    const transaction = db.transaction(['pending'], 'readwrite');
     const store = transaction.objectStore('pending');
     const getAll = store.getAll();
 
@@ -36,7 +32,7 @@ function checkDB() {
                 }
             }).then(response => response.json())
                 .then(() => {
-                    const transaction = db.transaction(['pending'], 'readWrite');
+                    const transaction = db.transaction(['pending'], 'readwrite');
                     const store = transaction.objectStore('pending');
                     store.clear();
                 });
@@ -44,4 +40,13 @@ function checkDB() {
     }
 }
 
-window.addEventListener('online', checkDB);
+function saveRecord(record) {
+    const transaction = db.transaction(['pending'], 'readwrite');
+    const store = transaction.objectStore('pending');
+    store.add(record);
+}
+
+module.exports = {
+    checkDB,
+    saveRecord
+};

@@ -4,7 +4,7 @@ const path = require("path");
 const config = {
   mode: "production",
   entry: {
-    index: "./public/assets/js/index.js"
+    index: "./public/index.js"
   },
   output: {
     path: __dirname + "/public/dist",
